@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Youtube, Music2, Github, Twitter } from 'lucide-react';
+import { Music2, Video, Image } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -15,15 +15,14 @@ const Footer = () => {
 
           <div className="flex space-x-6">
             {[
-              { icon: Instagram, href: '#' },
-              { icon: Youtube, href: '#' },
-              { icon: Music2, href: '#' },
-              { icon: Twitter, href: '#' },
-              { icon: Github, href: '#' },
-            ].map(({ icon: Icon, href }, index) => (
+              { icon: Music2, href: '/music', label: 'Music' },
+              { icon: Video, href: '/videos', label: 'Video' },
+              { icon: Image, href: '/photos', label: 'Photo' },
+            ].map(({ icon: Icon, href, label }, index) => (
               <a
                 key={index}
                 href={href}
+                aria-label={label}
                 className="w-10 h-10 flex items-center justify-center rounded-full border border-violet-400/30 text-violet-400 hover:bg-violet-950/50 hover:text-violet-300 hover:border-violet-400/50 transition-all duration-300"
               >
                 <Icon size={20} />

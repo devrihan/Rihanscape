@@ -3,17 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 // Import images directly
-import photo1 from '../assets/images/photo1.jpg';
-import photo2 from '../assets/images/photo2.jpg';
-import photo3 from '../assets/images/photo3.jpg';
+import photo21 from '../assets/images/photo21.jpg';
+import photo22 from '../assets/images/photo22.jpg';
 import photo4 from '../assets/images/photo4.jpg';
+import photo1 from '../assets/images/photo1.jpg';
 
 
 const PhotosPreview = () => {
   const navigate = useNavigate();
 
   // Store image imports in an array
-  const photoPaths = [photo1, photo2, photo3, photo4];
+  const photoPaths = [photo21, photo22, photo4, photo1];
 
   return (
     <section id="photos" className="min-h-screen bg-black py-24 px-4">

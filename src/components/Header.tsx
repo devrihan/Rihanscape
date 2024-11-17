@@ -7,8 +7,8 @@
 //   const [showGetStarted, setShowGetStarted] = useState(true);
 
 //   const handleLearnMoreClick = () => {
-//     // Redirect to LinkedIn profile
-//     window.location.href = 'https://www.linkedin.com/in/your-linkedin-profile','_blank'; // Replace with your LinkedIn URL
+//     // Open LinkedIn profile in a new tab
+//     window.open('https://www.instagram.com/akhtar__rihan?igsh=dnYzeWg3dDRwMjls', '_blank'); // Replace with your LinkedIn URL
 //     // Optionally, hide the "Get Started" page
 //     // setShowGetStarted(false);
 //   };
@@ -64,17 +64,16 @@
 // };
 
 // export default Header;
-import React, { useState } from 'react';
+import React from 'react';
 import { Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Using react-router-dom for navigation
 
 const Header = () => {
-  const [showGetStarted, setShowGetStarted] = useState(true);
+  const navigate = useNavigate();
 
   const handleLearnMoreClick = () => {
-    // Open LinkedIn profile in a new tab
-    window.open('https://www.instagram.com/akhtar__rihan?igsh=dnYzeWg3dDRwMjls', '_blank'); // Replace with your LinkedIn URL
-    // Optionally, hide the "Get Started" page
-    // setShowGetStarted(false);
+    // Redirect to the about page
+    navigate('/about');
   };
 
   return (
@@ -83,11 +82,11 @@ const Header = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-violet-950/80 via-black to-black" />
 
       {/* Background image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("https://wallpapers.com/images/hd/dream-art-j8thde6wjwdtmfa2.jpg")',
-          transform: 'scale(1.1)'
+          transform: 'scale(1.1)',
         }}
       />
 
@@ -103,13 +102,8 @@ const Header = () => {
           in Photos, Videos, and Music
         </p>
         <div className="flex items-center justify-center space-x-6">
-          {/* {showGetStarted && (
-            <button className="px-8 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.5)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)]">
-              Get Started
-            </button>
-          )} */}
-          <button 
-            onClick={handleLearnMoreClick} 
+          <button
+            onClick={handleLearnMoreClick}
             className="px-8 py-3 bg-white bg-opacity-20 text-white rounded-lg backdrop-blur-lg hover:bg-white hover:text-violet-950 transition-all duration-300 shadow-lg"
           >
             Learn More

@@ -6,6 +6,7 @@ import AllPhotos from './pages/AllPhotos';
 import PhotoDetail from './components/PhotoDetail'; // Import the PhotoDetail component
 import AllVideos from './pages/AllVideos';
 import AllMusic from './pages/AllMusic';
+import About from './pages/about';
 import Footer from './components/Footer';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/photo" element={<PhotoDetail />} /> {/* New PhotoDetail route */}
           <Route path="/videos" element={<AllVideos />} />
           <Route path="/music" element={<AllMusic />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </div>

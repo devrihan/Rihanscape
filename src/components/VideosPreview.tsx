@@ -1,9 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, ArrowRight } from 'lucide-react';
 
-// Import video thumbnails
+// Import video thumbnails and video sources
 import video1 from '../assets/videos/video1.jpg';
+import video3 from '../assets/videos/video3.jpg';
+import video4 from '../assets/videos/video4.jpg';
+import video5 from '../assets/videos/video5.jpg';
+import videoSrc1 from '../assets/videos/video1.mp4';
+import videoSrc3 from '../assets/videos/video3.mp4';
+import videoSrc4 from '../assets/videos/video4.mp4';
+import videoSrc5 from '../assets/videos/video5.mp4';
 
 const VideosPreview = () => {
   const navigate = useNavigate();
@@ -12,14 +20,20 @@ const VideosPreview = () => {
   const scrollPosRef = useRef(0);
   const intervalRef = useRef<number>();
 
-  const videoThumbnails = [video1];
+  const videoThumbnails = [
+    { thumbnail: video1, src: videoSrc1, title: 'City of joy!', duration: '00.21' },
+    { thumbnail: video3, src: videoSrc3, title: 'Quite Moments', duration: '00.14' },
+    { thumbnail: video4, src: videoSrc4, title: 'Vellore Diaries', duration: '00.32' },
+    { thumbnail: video5, src: videoSrc5, title: 'With the flow', duration: '00.07' },
+  ];
+
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     const container = containerRef.current;
     if (!scrollContainer || !container) return;
 
-    // Clone videos for smooth infinite scroll
     const originalVideos = container.children;
     [...originalVideos].forEach(video => {
       const clone = video.cloneNode(true) as HTMLElement;
@@ -29,17 +43,16 @@ const VideosPreview = () => {
     const scroll = () => {
       if (!scrollContainer || !container) return;
 
-      scrollPosRef.current += 0.5; // Adjust speed here
+      scrollPosRef.current += 0.5;
       scrollContainer.scrollLeft = scrollPosRef.current;
 
-      // Reset scroll position when reaching half of the content
       if (scrollPosRef.current >= container.clientWidth / 2) {
         scrollPosRef.current = 0;
         scrollContainer.scrollLeft = 0;
       }
     };
 
-    intervalRef.current = window.setInterval(scroll, 16); // ~60fps for smooth animation
+    intervalRef.current = window.setInterval(scroll, 16);
 
     const handleMouseEnter = () => {
       if (intervalRef.current) {
@@ -79,26 +92,39 @@ const VideosPreview = () => {
                   key={index}
                   className="relative flex-none w-full md:w-[600px] aspect-video group"
                 >
-                  <div className="relative h-full rounded-xl overflow-hidden">
-                    <img
-                      src={video}
-                      alt={`Video thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  {playingIndex === index ? (
+                    <video
+                      src={video.src}
+                      controls
+                      autoPlay
+                      className="w-full h-full rounded-xl"
+                      onEnded={() => setPlayingIndex(null)} // Reset to thumbnail when the video ends
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <button className="w-16 h-16 flex items-center justify-center rounded-full bg-violet-600/90 text-white transform transition-all duration-300 group-hover:scale-110 group-hover:bg-violet-600 shadow-[0_0_25px_rgba(124,58,237,0.5)]">
-                          <Play size={32} className="ml-1" />
-                        </button>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 className="text-white text-xl font-semibold mb-2">
-                          Video Title {index + 1}
-                        </h3>
-                        <p className="text-gray-300">Duration • Views</p>
+                  ) : (
+                    <div className="relative h-full rounded-xl overflow-hidden">
+                      <img
+                        src={video.thumbnail}
+                        alt={`Video thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <button
+                            onClick={() => setPlayingIndex(index)} // Set the video to play
+                            className="w-16 h-16 flex items-center justify-center rounded-full bg-violet-600/90 text-white transform transition-all duration-300 group-hover:scale-110 group-hover:bg-violet-600 shadow-[0_0_25px_rgba(124,58,237,0.5)]"
+                          >
+                            <Play size={32} className="ml-1" />
+                          </button>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="text-white text-xl font-semibold mb-2">
+                            {video.title}
+                          </h3>
+                          <p className="text-gray-300">{video.duration}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               ))}
             </div>

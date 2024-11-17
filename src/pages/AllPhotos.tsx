@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Import local photo assets
@@ -20,31 +21,43 @@ import photo15 from '../assets/images/photo15.jpg';
 import photo16 from '../assets/images/photo16.jpg';
 import photo17 from '../assets/images/photo17.jpg';
 import photo18 from '../assets/images/photo18.jpg';
+import photo19 from '../assets/images/photo19.jpg';
+import photo20 from '../assets/images/photo20.jpg';
+import photo21 from '../assets/images/photo21.jpg';
+import photo22 from '../assets/images/photo22.jpg';
 
 // Photo metadata array
 const photos = [
-  { src: photo1, title: 'Sunrise in the Mountains', description: 'A breathtaking view of the sunrise over the peaks.' },
-  { src: photo2, title: 'Calm Forest', description: 'The serene beauty of the forest in the morning mist.' },
-  { src: photo3, title: 'City Lights', description: 'A stunning capture of city lights at night.' },
-  { src: photo4, title: 'Ocean Horizon', description: 'The endless view of the ocean meeting the sky.' },
-  { src: photo5, title: 'Desert Mirage', description: 'The golden sands of the desert under the blazing sun.' },
-  { src: photo6, title: 'Starry Night', description: 'A mesmerizing view of the star-studded sky.' },
-  { src: photo7, title: 'Majestic Waterfall', description: 'The powerful and serene beauty of a waterfall.' },
-  { src: photo8, title: 'Snowy Peaks', description: 'A stunning landscape of snow-covered mountain tops.' },
-  { src: photo9, title: 'Golden Sunset', description: 'The warm hues of the sunset casting light on the waves.' },
-  { src: photo10, title: 'Dense Jungle', description: 'A glimpse into the lush green jungle.' },
-  { src: photo11, title: 'Rolling Hills', description: 'Beautiful green hills stretching into the horizon.' },
-  { src: photo12, title: 'Lakeside Serenity', description: 'A calm and peaceful lake surrounded by trees.' },
-  { src: photo13, title: 'Cityscape', description: 'A panoramic view of the bustling city skyline.' },
-  { src: photo14, title: 'Flower Garden', description: 'An array of colorful flowers blooming in a garden.' },
-  { src: photo15, title: 'Frozen Lake', description: 'A lake frozen in winter, reflecting the clear sky.' },
-  { src: photo16, title: 'Rocky Coastline', description: 'Waves crashing against rugged rocks on the shore.' },
-  { src: photo17, title: 'Rainy Day', description: 'Raindrops falling on a window, blurring the view outside.' },
-  { src: photo18, title: 'Countryside Road', description: 'A peaceful road cutting through lush countryside.' },
+  { src: photo1, title: 'Laughing Buddha', description: 'Joy is the simplest form of gratitude.' },
+  { src: photo2, title: 'Silhouette of Solitude', description: 'Even the crow finds beauty in the fading sun.' },
+  { src: photo3, title: 'Drift of Dreams', description: 'A boat journey mirrors life' },
+  { src: photo4, title: 'Voice of the Soul', description: 'A great singer doesn’t just perform; they touch hearts and echo emotions' },
+  { src: photo5, title: 'Golden Horizon', description: 'Every sunset is a whisper of hope for a new dawn.' },
+  { src: photo6, title: 'Light of Enlightenment', description: 'Peace comes from within. Do not seek it without.' },
+  { src: photo7, title: 'A Reflection in Ink', description: 'In every line, a piece of my story unfolds.' },
+  { src: photo8, title: 'The Light within', description: 'Hope is the spark that ignites the courage to move forward' },
+  { src: photo9, title: 'Radiant Shield', description: 'Even in the darkest of times, a new wave of light guides the way' },
+  { src: photo10, title: 'Whispers of Life', description: 'Like a leaf, life grows, changes, and finds beauty in every season' },
+  { src: photo11, title: 'Shadow of the Dark Side', description: 'Even in the light, the darkness finds its place.' },
+  { src: photo12, title: 'Strings of Expression', description: 'The guitar sings what words cannot express' },
+  { src: photo13, title: 'Wings of Imagination', description: 'A book opens the mind, and an airplane takes it to new heights.' },
+  { src: photo14, title: 'Sizzle of Creativity', description: 'In the pan, simple ingredients transform into a masterpiece' },
+  { src: photo15, title: 'Through My Lens', description: 'Capturing moments, one click at a time.' },
+  { src: photo16, title: 'Power of Knowledge', description: 'A hand that holds a book holds the key to endless worlds' },
+  { src: photo17, title: 'Chasing the Horizon', description: 'In the fading light, we find the strength to move forward' },
+  { src: photo18, title: 'Silent Glow', description: 'The moon whispers secrets to those who listen in the quiet night.' },
+  { src: photo19, title: 'Captured Moments', description: ' I freeze time and tell untold stories.' },
+  { src: photo20, title: 'Harbor of Dreams', description: 'The shore whispers to the boat, calling it to sail once more.' },
+  { src: photo21, title: 'The Silent Wait', description: 'A fisherman knows that patience is as important as the catch' },
+  { src: photo22, title: 'Anchored in Tranquility', description: 'A boat at the shore waits for the call of the open sea.' }
 ];
 
 const AllPhotos = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   // Navigate to photo detail page
   const handlePhotoClick = (photo: { src: string; title: string; description: string }) => {

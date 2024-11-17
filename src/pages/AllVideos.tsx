@@ -1,20 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 // Import local video thumbnails
+// Import local video thumbnails
 import videoThumb1 from '../assets/videos/video1.jpg';
+import videoThumb2 from '../assets/videos/video2.jpg';
+import videoThumb3 from '../assets/videos/video3.jpg';
+import videoThumb4 from '../assets/videos/video4.jpg';
+import videoThumb5 from '../assets/videos/video5.jpg';
+import videoThumb6 from '../assets/videos/video6.jpg';
+import videoThumb7 from '../assets/videos/video7.jpg';
+import videoThumb8 from '../assets/videos/video8.jpg';
+import videoThumb9 from '../assets/videos/video9.jpg';
 
 
-// Import actual video files
+
 import video1 from '../assets/videos/video1.mp4';
+import video2 from '../assets/videos/video2.mp4';
+import video3 from '../assets/videos/video3.mp4';
+import video4 from '../assets/videos/video4.mp4';
+import video5 from '../assets/videos/video5.mp4';
+import video6 from '../assets/videos/video6.mp4';
+import video7 from '../assets/videos/video7.mp4';
+import video8 from '../assets/videos/video8.mp4';
+import video9 from '../assets/videos/video9.mp4';
+
 
 
 const videos = [
-  { thumbnail: videoThumb1, title: 'Pondi', video: video1 },
-
+  { thumbnail: videoThumb1, title: 'City of Joy!', duration: '0.07', views: '1.2k', video: video1 },
+  { thumbnail: videoThumb2, title: 'Self Realisation', duration: '0.07', views: '1.2k', video: video2 },
+  { thumbnail: videoThumb3, title: 'Quite moments', duration: '0.07', views: '1.2k', video: video3 },
+  { thumbnail: videoThumb4, title: 'Vellore Diaries', duration: '0.07', views: '1.2k', video: video4 },
+  { thumbnail: videoThumb5, title: 'Go with the flow', duration: '0.07', views: '1.2k', video: video5 },
+  { thumbnail: videoThumb6, title: 'Life goes on', duration: '0.07', views: '1.2k', video: video6 },
+  { thumbnail: videoThumb7, title: 'Still frames', duration: '0.07', views: '1.2k', video: video7 },
+  { thumbnail: videoThumb8, title: 'TamskiNilu', duration: '0.07', views: '1.2k', video: video8 },
+  { thumbnail: videoThumb9, title: 'TwinCity Aesthetics', duration: '0.07', views: '1.2k', video: video9 }
 ];
+
 
 const VideosSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   const handleCloseModal = () => {
     setSelectedVideo(null);

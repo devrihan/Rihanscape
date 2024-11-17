@@ -2,14 +2,40 @@ import React from 'react';
 
 // Import local video thumbnails
 import videoThumb1 from '../assets/videos/video1.jpg';
+import videoThumb2 from '../assets/videos/video2.jpg';
+import videoThumb3 from '../assets/videos/video3.jpg';
+import videoThumb4 from '../assets/videos/video4.jpg';
+import videoThumb5 from '../assets/videos/video5.jpg';
+import videoThumb6 from '../assets/videos/video6.jpg';
+import videoThumb7 from '../assets/videos/video7.jpg';
+import videoThumb8 from '../assets/videos/video8.jpg';
+import videoThumb9 from '../assets/videos/video9.jpg';
+
 
 
 // Optional: Import actual video files if needed
 import video1 from '../assets/videos/video1.mp4';
+import video2 from '../assets/videos/video2.mp4';
+import video3 from '../assets/videos/video3.mp4';
+import video4 from '../assets/videos/video4.mp4';
+import video5 from '../assets/videos/video5.mp4';
+import video6 from '../assets/videos/video6.mp4';
+import video7 from '../assets/videos/video7.mp4';
+import video8 from '../assets/videos/video8.mp4';
+import video9 from '../assets/videos/video9.mp4';
+
 
 
 const videos = [
-  { thumbnail: videoThumb1, title: 'Pondi', duration: '0.07', views: '1.2k', video: video1 }
+  { thumbnail: videoThumb1, title: 'Pondi', duration: '0.07', views: '1.2k', video: video1 },
+  { thumbnail: videoThumb2, title: 'Pondi', duration: '0.07', views: '1.2k', video: video2 },
+  { thumbnail: videoThumb3, title: 'Pondi', duration: '0.07', views: '1.2k', video: video3 },
+  { thumbnail: videoThumb4, title: 'Pondi', duration: '0.07', views: '1.2k', video: video4 },
+  { thumbnail: videoThumb5, title: 'Pondi', duration: '0.07', views: '1.2k', video: video5 },
+  { thumbnail: videoThumb6, title: 'Pondi', duration: '0.07', views: '1.2k', video: video6 },
+  { thumbnail: videoThumb7, title: 'Pondi', duration: '0.07', views: '1.2k', video: video7 },
+  { thumbnail: videoThumb8, title: 'Pondi', duration: '0.07', views: '1.2k', video: video8 },
+  { thumbnail: videoThumb9, title: 'Pondi', duration: '0.07', views: '1.2k', video: video9 }
 ];
 
 const VideosSection = () => {
